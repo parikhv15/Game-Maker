@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="http://fluency.knownspace.org/student-files/spring2015/a4/team1/" href="project.jnlp">
+  <information>
+    <title>Game Maker</title>
+    <vendor>P532</vendor>
+    <homepage href="http://fluency.knownspace.org/confluence" />
+    <description>Game Maker</description>   
+    <description kind="short"></description>
+    <icon href="kslogo.gif" />
+  </information>
+  <offline-allowed />
+  <security>
+      <all-permissions />
+  </security>
+  <resources>
+   	<j2se version="1.6+" />
+    <jar href="team1.jar" />
+  </resources>
+  <application-desc main-class="view.GameMakerInitFrame"  />
+</jnlp>
