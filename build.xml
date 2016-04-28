@@ -191,9 +191,7 @@
 			<pathelement location="${classes}" />
 			<pathelement location="${testclasses}" />
 		</path>
-		<emma>
-			<instr instrpathref="instr.path" destdir="${tests.classes.instr.dir}" metadatafile="${dist.coverage.dir}/metadata.emma" merge="true" />
-		</emma>
+
 		<junit printsummary="on" haltonfailure="false" fork="true" clonevm="true">
 			<classpath refid="test.classpath" />
 			<formatter type="brief" usefile="false" />
@@ -214,14 +212,5 @@
 			</fileset>
 			<report format="frames" todir="${dist.tests.dir}" />
 		</junitreport>
-		<emma>
-			<report sourcepath="${src},${test}">
-				<fileset dir="${dist.coverage.dir}">
-					<include name="*.emma" />
-				</fileset>
-				<txt outfile="${dist.coverage.dir}/index.txt" />
-				<html outfile="${dist.coverage.dir}/index.html" />
-			</report>
-		</emma>
 	</target>
 </project>

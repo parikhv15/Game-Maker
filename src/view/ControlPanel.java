@@ -313,7 +313,7 @@ public class ControlPanel extends JPanel implements ActionListener {
 	/**
 	 * Creates a pane for Game Condition
 	 * 
-	 * @param actionConditionList
+	 * @param
 	 * @return
 	 */
 	private JScrollPane createActionConditionScrollPane() {
