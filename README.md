@@ -1,12 +1,20 @@
 # Game Maker
 
-Implemented a Game Maker Application using Java Platform.
+Game Maker allows user to create a wide range of personalized standalone games like Breakout, Frogger, Asteroid, etc. One can also save, preview and load the game created.
 
 Presentation Links : [Demo Video] (http://youtu.be/wqKW_2SJuko "Demo Video")
 
 Dependencies : [Java 7] (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html "JDK 7") | [Ant] (http://ant.apache.org/ "Ant Build")
 
-### Steps to Run:
+### Core Features
+
+- Ability to create, save and load game
+- Ability to select a background from given collection
+- Select and create a game object using drag and drop
+- Associate and deassociate actions and events to individual game objects
+- Ability to preview the created game
+
+### Steps to Run
 
 1) Compile Project
 ```
@@ -31,14 +39,6 @@ ant run-tests
 ```
 java -jar GameMaker.jar
 ```
-
-### Features
-
-- Ability to create, save and load game
-- Ability to select a background from given collection
-- Select and create a game object using drag and drop
-- Associate and deassociate actions and events to individual game objects
-- Ability to preview the created game
 
 ### Design
 
