@@ -2,7 +2,9 @@
 
 Game Maker allows user to create a wide range of personalized standalone games like Breakout, Frogger, Asteroid, etc. One can also save, preview and load the game created.
 
-Presentation Links : [Demo Video] (http://youtu.be/wqKW_2SJuko "Demo Video")
+Click on the following link to view the video demo of the application:
+
+[Game Maker Video] (http://youtu.be/wqKW_2SJuko "Demo Video")
 
 Dependencies : [Java 7] (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html "JDK 7") | [Ant] (http://ant.apache.org/ "Ant Build")
 
