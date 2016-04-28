@@ -42,7 +42,7 @@ java -jar GameMaker.jar
 
 ### Design
 
-[design]: https://github.com/parikhv15/Game-Maker/blob/master/design.jpg?raw=true "Design"
+![design] (https://github.com/parikhv15/Game-Maker/blob/master/design.jpg?raw=true "Design")
 
 ### License
 
