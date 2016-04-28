@@ -32,7 +32,6 @@ ant run-tests
 java -jar GameMaker.jar
 ```
 
-
 ### Features
 
 - Ability to create, save and load game
@@ -40,6 +39,10 @@ java -jar GameMaker.jar
 - Select and create a game object using drag and drop
 - Associate and deassociate actions and events to individual game objects
 - Ability to preview the created game
+
+### Design
+
+[design]: https://github.com/parikhv15/Game-Maker/design.jpg "Design"
 
 ### License
 
