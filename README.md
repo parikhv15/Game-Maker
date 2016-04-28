@@ -28,6 +28,10 @@ ant run-tests
 1) Download GameMaker.jar
 
 2) Run the jar
+```
+java -jar GameMaker.jar
+```
+
 
 ### Features
 
