@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -18,7 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
@@ -141,11 +139,7 @@ class DropBoxHandler extends TransferHandler {
 		}
 
 		JList.DropLocation dl = (JList.DropLocation) support.getDropLocation();
-		if (dl.getIndex() == -1) {
-			return false;
-		} else {
-			return true;
-		}
+		return dl.getIndex() != -1;
 	}
 }
 
@@ -179,8 +173,8 @@ class MyDropTargetListener extends DropTargetAdapter {
 			ImageIcon icon = new ImageIcon(
 					getClass()
 							.getClassLoader()
-							.getResource(SPRITE_IMG_RES_PATH + 
-									(String) tr
+							.getResource(SPRITE_IMG_RES_PATH +
+									tr
 											.getTransferData(DropBoxHandler.DATA_FLAVOUR)));
 
 			if (event.isDataFlavorSupported(DropBoxHandler.DATA_FLAVOUR)) {

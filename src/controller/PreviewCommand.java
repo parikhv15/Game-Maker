@@ -2,8 +2,6 @@ package controller;
 
 import model.TimerObservable;
 import controller.Command;
-import view.ControlPanel;
-import view.PreviewPanel;
 
 //call method of model to load demo game for preview command 
 public class PreviewCommand implements Command {

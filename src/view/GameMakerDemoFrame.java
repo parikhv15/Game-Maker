@@ -7,11 +7,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -26,7 +23,6 @@ import static model.GameConstants.CLOCK_PANEL_HEIGHT;
 import static model.GameConstants.GAME_AREA_HEIGHT;
 import static model.GameConstants.GAME_AREA_WIDTH;
 import model.GameData;
-import model.Sprite;
 import model.TimerObservable;
 import model.GameConstants.ColorEnum;
 
@@ -79,7 +75,7 @@ public class GameMakerDemoFrame extends JFrame implements Observer {
 
 	}
 
-	public JPanel createMainPanel() {
+	private JPanel createMainPanel() {
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
 		createGameAreaPanel();
@@ -97,7 +93,7 @@ public class GameMakerDemoFrame extends JFrame implements Observer {
 	}
 
 	//Clock panel
-	public void addClockPanel() {
+	private void addClockPanel() {
 		createClockPanel();
 
 		mainPanel.add(clockPanel);
@@ -109,7 +105,7 @@ public class GameMakerDemoFrame extends JFrame implements Observer {
 
 	// main demo panel
 	// main demo panel
-	public void createGameAreaPanel() {
+	private void createGameAreaPanel() {
 		this.gameAreaPanel = new JPanel() {
 			@Override
 			public void paint(Graphics g) {
@@ -132,7 +128,7 @@ public class GameMakerDemoFrame extends JFrame implements Observer {
 		gameAreaPanel.setBackground(ColorEnum.COLOR_PREVIEW_GAME_PANEL.getColorCode());
 	}
 
-	public void createClockPanel() {
+	private void createClockPanel() {
 		this.clockPanel = new JPanel();
 		FlowLayout layout = new FlowLayout();
 		clockPanel.setLayout(layout);

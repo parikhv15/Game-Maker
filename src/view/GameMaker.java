@@ -27,7 +27,7 @@ public class GameMaker {
 		gameMakerFrame.setVisible(true);
 	}
 
-	public void createGameMakerUI(JFrame gameMakerFrame) {
+	private void createGameMakerUI(JFrame gameMakerFrame) {
 		// Create the panels
 		GamePanel gamePanel = new GamePanel(frameTitle, gameMode);
 		Component panes = gamePanel.createPanes();
@@ -40,25 +40,10 @@ public class GameMaker {
 		try {
 			UIManager.setLookAndFeel(UIManager
 					.getCrossPlatformLookAndFeelClassName());
-		} catch (InstantiationException e) {
+		} catch (InstantiationException | UnsupportedLookAndFeelException | ClassNotFoundException | IllegalAccessException e) {
 			System.err
 					.println("Couldn't find class for specified look and feel:");
-		} catch (IllegalAccessException e) {
-			System.err
-					.println("Couldn't find class for specified look and feel:");
-		}
-
-		catch (ClassNotFoundException e) {
-			System.err
-					.println("Couldn't find class for specified look and feel:");
-		}
-
-		catch (UnsupportedLookAndFeelException e) {
-			System.err
-					.println("Couldn't find class for specified look and feel:");
-		}
-
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.err
 					.println("Couldn't find class for specified look and feel:");
 			e.printStackTrace();

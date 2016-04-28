@@ -16,15 +16,14 @@ import controller.AssociateCommand;
 public class AssociateCommandTest {
 
 	private AssociateCommand associateCommand;
-	private EventActionAssociation eventEntry;
 	private GameData gameData;
-	ActionConditionAssociation actionCondition;
-	ArrayList<String> actualTypeList;
+	private ActionConditionAssociation actionCondition;
+	private ArrayList<String> actualTypeList;
 	
 	@Before
 	public void executeTest() {
-		eventEntry = new EventActionAssociation();
-		actualTypeList = new ArrayList<String>();
+		EventActionAssociation eventEntry = new EventActionAssociation();
+		actualTypeList = new ArrayList<>();
 		actualTypeList.add("AUTO");
 		actionCondition = new ActionConditionAssociation(actualTypeList);
 		eventEntry.getActionList().add(actionCondition);

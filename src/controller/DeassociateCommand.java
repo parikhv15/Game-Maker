@@ -1,7 +1,5 @@
 package controller;
 
-import static org.junit.Assert.assertFalse;
-import model.EventActionAssociation;
 import model.GameData;
 import model.Sprite;
 

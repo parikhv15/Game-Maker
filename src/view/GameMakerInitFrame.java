@@ -11,10 +11,7 @@ import java.io.FilenameFilter;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
 
-import controller.LoadCommand;
-import model.GameConstants;
 import model.GameConstants.ColorEnum;
 import model.GameConstants.GameMode;
 import model.PlaySound;
@@ -25,21 +22,16 @@ import model.GameConstants.SoundMode;
 public class GameMakerInitFrame {
 
 	private JFrame mainFrame;
-	private JLabel newGameLabel;
-	private JLabel loadGameLabel;
 	private JTextField textTextField;
 	private JComboBox cbComboBox;
-	private JButton createGameButton;
 	private JButton cancelButton;
-	private JButton loadButton;
 	private JButton loadGameButton;
 	private JButton newGameButton;
 	private JPanel formPanel;
-	private JPanel initialOptionsPanel;
 	private JPanel buttonsPanel;
 	private PlaySound playSound;
 	private GameMaker gameMaker;
-	private JPanel cards, newGameCardPanel, loadGameCardPanel;
+	private JPanel cards;
 	private String newGameCard, loadGameCard, initCard;
 	private ArrayList<File> gameList;
 	private GameMode gameMode;
@@ -49,7 +41,7 @@ public class GameMakerInitFrame {
 
 		playSound = new PlaySound();
 		File dir = new File(".");
-		gameList = new ArrayList<File>(Arrays.asList(dir.listFiles(new FilenameFilter() {
+		gameList = new ArrayList<>(Arrays.asList(dir.listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
 				return name.endsWith(".ser"); // or something else
@@ -76,7 +68,7 @@ public class GameMakerInitFrame {
 
 	private void createInitialOptionsPanel() {
 
-		initialOptionsPanel = new JPanel();
+		JPanel initialOptionsPanel = new JPanel();
 		newGameButton = new JButton("New Game");
 		loadGameButton = new JButton("Load Game");
 
@@ -110,7 +102,7 @@ public class GameMakerInitFrame {
 				loadGameButton.setEnabled(true);
 				newGameButton.setEnabled(false);
 				CardLayout cl = (CardLayout) (cards.getLayout());
-				cl.show(cards, (String) newGameCard);
+				cl.show(cards, newGameCard);
 
 			}
 		});
@@ -128,7 +120,7 @@ public class GameMakerInitFrame {
 				}
 
 				CardLayout cl = (CardLayout) (cards.getLayout());
-				cl.show(cards, (String) loadGameCard);
+				cl.show(cards, loadGameCard);
 
 			}
 		});
@@ -139,10 +131,10 @@ public class GameMakerInitFrame {
 
 	private JPanel createNewGameCardPanel() {
 
-		newGameCardPanel = new JPanel();
-		newGameLabel = new JLabel("Enter Name");
+		JPanel newGameCardPanel = new JPanel();
+		JLabel newGameLabel = new JLabel("Enter Name");
 		textTextField = new JTextField(15);
-		createGameButton = new JButton("Create");
+		JButton createGameButton = new JButton("Create");
 		cancelButton = new JButton("Cancel");
 		formPanel = new JPanel();
 		buttonsPanel = new JPanel();
@@ -160,13 +152,7 @@ public class GameMakerInitFrame {
 
 					try {
 						playSound.playSoundMethod(SoundMode.ERROR_MESSAGE);
-					} catch (UnsupportedAudioFileException e) {
-
-						e.printStackTrace();
-					} catch (IOException e) {
-
-						e.printStackTrace();
-					} catch (LineUnavailableException e) {
+					} catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
 
 						e.printStackTrace();
 					}
@@ -184,7 +170,7 @@ public class GameMakerInitFrame {
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				CardLayout cl = (CardLayout) (cards.getLayout());
-				cl.show(cards, (String) initCard);
+				cl.show(cards, initCard);
 				loadGameButton.setEnabled(true);
 				newGameButton.setEnabled(true);
 			}
@@ -210,11 +196,11 @@ public class GameMakerInitFrame {
 
 	private JPanel createLoadGameCardPanel() {
 
-		loadGameCardPanel = new JPanel();
-		loadGameLabel = new JLabel("Select Game");
+		JPanel loadGameCardPanel = new JPanel();
+		JLabel loadGameLabel = new JLabel("Select Game");
 		cbComboBox = new JComboBox();
 		cancelButton = new JButton("Cancel");
-		loadButton = new JButton("Load");
+		JButton loadButton = new JButton("Load");
 		formPanel = new JPanel();
 		buttonsPanel = new JPanel();
 
@@ -246,7 +232,7 @@ public class GameMakerInitFrame {
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				CardLayout cl = (CardLayout) (cards.getLayout());
-				cl.show(cards, (String) initCard);
+				cl.show(cards, initCard);
 				loadGameButton.setEnabled(true);
 				newGameButton.setEnabled(true);
 			}

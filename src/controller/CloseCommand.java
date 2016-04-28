@@ -2,8 +2,6 @@ package controller;
 
 import model.TimerObservable;
 import controller.Command;
-import view.ControlPanel;
-import view.PreviewPanel;
 
 //call method of model to stop the timer observable
 public class CloseCommand implements Command {

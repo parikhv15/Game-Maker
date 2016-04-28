@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class ActionConditionAssociation implements Serializable{
 
 	ArrayList<String> actionType;
-	ArrayList<String> actionCondition;
-	ArrayList<Sprite> associatedSpriteList;
+	private ArrayList<String> actionCondition;
+	private ArrayList<Sprite> associatedSpriteList;
 
 	public ActionConditionAssociation(ArrayList<String> actionType) {
 		this.actionType = actionType;
@@ -23,8 +23,8 @@ public class ActionConditionAssociation implements Serializable{
 	}
 	
 	public ActionConditionAssociation() {
-		this.actionCondition = new ArrayList<String>();
-		this.associatedSpriteList = new ArrayList<Sprite>();
+		this.actionCondition = new ArrayList<>();
+		this.associatedSpriteList = new ArrayList<>();
 	}
 
 	public ArrayList<String> getActionCondition() {

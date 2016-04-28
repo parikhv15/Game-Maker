@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." default="default" name="${base.project.name}">
+<project basedir="." default="default" name="Game Maker">
 	<!--
   ########################################################################################
   Global properties. These are used by all targets in this build file.
@@ -87,12 +87,12 @@
 		<mkdir dir="${dist}" />
 		<jar jarfile="${dist}/${base.project.name}.jar" basedir="${classes}">
 			<manifest>
-				<attribute name="Main-Class" value="view.MainView" />
+				<attribute name="Main-Class" value="view.GameMakerInitFrame" />
 			</manifest>
 		</jar>
 	</target>
 	<target name="run" depends="jar">
-		<java fork="true" classname="view.MainView">
+		<java fork="true" classname="view.GameMakerInitFrame">
 			<classpath>
 				<path location="${dist}/${base.project.name}.jar" />
 			</classpath>
@@ -124,7 +124,6 @@
 			<jvmarg value="-XX:-UseSplitVerifier" />
 			<jvmarg value="-Demma.coverage.out.merge=true" />
 			<jvmarg value="-Demma.report.out.encoding=UTF-8" />
-			<jvmarg value="-Djava.awt.headless=${java.awt.headless}" />
 			<jvmarg value="-D${awt.toolkit.property}=${awt.toolkit}" />
 		</junit>
 	</target>
@@ -207,7 +206,6 @@
 			<jvmarg value="-Demma.coverage.out.file=${dist.coverage.dir}/coverage.emma" />
 			<jvmarg value="-Demma.coverage.out.merge=true" />
 			<jvmarg value="-Demma.report.out.encoding=UTF-8" />
-			<jvmarg value="-Djava.awt.headless=${java.awt.headless}" />
 			<jvmarg value="-D${awt.toolkit.property}=${awt.toolkit}" />
 		</junit>
 		<junitreport todir="${dist.tests.dir}">

@@ -2,7 +2,6 @@ package main;
 
 import static org.junit.Assert.*;
 
-import java.awt.Event;
 import java.util.Arrays;
 
 import model.EventActionAssociation;
@@ -17,8 +16,6 @@ import model.Sprite;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import view.SpriteSelector;
 
 public class GameDataTest {
 

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 //associated action type, action condition and associated sprite object list 
 
 public class EventActionAssociation implements Serializable{
-	Sprite sprite;
-	ArrayList<String> eventNameList;
-	ArrayList<ActionConditionAssociation> actionList;
+	private Sprite sprite;
+	private ArrayList<String> eventNameList;
+	private ArrayList<ActionConditionAssociation> actionList;
 
 	public EventActionAssociation() {
 		actionList = new ArrayList<>();

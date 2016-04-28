@@ -26,7 +26,7 @@ public class SpriteListRenderer extends DefaultListCellRenderer{
 		
 		JLabel label = (JLabel) super.getListCellRendererComponent(list, value,
 				index, isSelected, cellHasFocus);
-		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(SPRITE_IMG_RES_PATH+(String) value));
+		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(SPRITE_IMG_RES_PATH+ value));
 		Image img = icon.getImage();
 		icon.setImage(img.getScaledInstance(SPRITE_IMAGE_ICON_DIMENSION, SPRITE_IMAGE_ICON_DIMENSION, Image.SCALE_SMOOTH));
 		

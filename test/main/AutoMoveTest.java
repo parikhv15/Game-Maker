@@ -10,12 +10,10 @@ import model.Sprite;
 import org.junit.Before;
 import org.junit.Test;
 
-import view.ControlPanel;
-
 public class AutoMoveTest {
 	
-	Sprite spriteObject;
-	AutoEvent autoEvent;
+	private Sprite spriteObject;
+	private AutoEvent autoEvent;
 	 @Before
 	 public void executedBeforeEach() {
 		 spriteObject = new Sprite();

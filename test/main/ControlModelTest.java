@@ -3,7 +3,6 @@ package main;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -17,7 +16,7 @@ import view.ControlPanel;
 public class ControlModelTest {
 
 	
-	ControlPanel controlPanel;
+	private ControlPanel controlPanel;
 	  @Before
 	 public void executedBeforeEach() {
 		

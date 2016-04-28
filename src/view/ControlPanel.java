@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -85,10 +84,8 @@ public class ControlPanel extends JPanel implements ActionListener {
 	private PreviewCommand previewCommand;
 	private AssociateCommand associateCommand;
 	private DeassociateCommand deassociateCommand;
-	private JPanel gameMakerControlButtonsPanel;
 	private JPanel controlPanel;
 	private JLabel warningLabel;
-	private SpriteSelector selectorSelector;
 	private String textFieldString;
 	private String borderTitleString;
 	private JList actionTypeList;
@@ -99,7 +96,6 @@ public class ControlPanel extends JPanel implements ActionListener {
 	private SaveCommand saveCommand;
 	private String frameTitle;
 	private JComboBox eventTypeComboBox;
-	private JCheckBox clockCheckBox;
 	private StringBuffer gameSummaryStringBuffer;
 	private TimerObservable timerObs;
 
@@ -132,7 +128,6 @@ public class ControlPanel extends JPanel implements ActionListener {
 	private Dimension genericScrollPaneDimension;
 	private Dimension summaryScrollPaneDimension;
 	private Dimension backgroundImageScrollPaneDimension;
-	private LoadCommand loadCommnad;
 
 	// Creating an empty constructor for JUnit test cases
 
@@ -169,7 +164,7 @@ public class ControlPanel extends JPanel implements ActionListener {
 		this.frameTitle = frameTitle;
 
 		if (gameMode == GameMode.LOAD_GAME) {
-			loadCommnad = new LoadCommand(gameData, frameTitle);
+			LoadCommand loadCommnad = new LoadCommand(gameData, frameTitle);
 			loadCommnad.execute();
 			updateSpriteList();
 		}
@@ -352,7 +347,7 @@ public class ControlPanel extends JPanel implements ActionListener {
 				String[] selections = Arrays.copyOf(objSelections, objSelections.length, String[].class);
 
 				for (String selection : selections) {
-					destinations += selection.toString();
+					destinations += selection;
 				}
 			}
 		};
@@ -410,16 +405,16 @@ public class ControlPanel extends JPanel implements ActionListener {
 
 				int[] getSelectedIndex;
 				// String Buffers for Populating the Summary
-				StringBuffer associatedSpriteSummaryStringBuffer = new StringBuffer();
-				StringBuffer actionConditionTypeSummaryStringBuffer = new StringBuffer();
-				StringBuffer actionTypeSummaryStringBuffer = new StringBuffer();
+				StringBuilder associatedSpriteSummaryStringBuffer = new StringBuilder();
+				StringBuilder actionConditionTypeSummaryStringBuffer = new StringBuilder();
+				StringBuilder actionTypeSummaryStringBuffer = new StringBuilder();
 
 				Sprite spriteSelected = getGameData().getSelectedSprite(spriteNameSelected);
 				if (gameData.checkSpriteEntry(spriteSelected) == false) {
 					EventActionAssociation eventEntry = new EventActionAssociation();
-					ArrayList<String> actionCondType = new ArrayList<String>();
-					ArrayList<String> actionType = new ArrayList<String>();
-					ArrayList<Sprite> associatedSprite = new ArrayList<Sprite>();
+					ArrayList<String> actionCondType = new ArrayList<>();
+					ArrayList<String> actionType = new ArrayList<>();
+					ArrayList<Sprite> associatedSprite = new ArrayList<>();
 
 					if (spriteNameSelected == null) {
 						JOptionPane.showMessageDialog(ControlPanel.this.controlPanel, "Create a sprite first !");
@@ -442,23 +437,23 @@ public class ControlPanel extends JPanel implements ActionListener {
 						if (actionConditionList != null) {
 							getSelectedIndex = actionConditionList.getSelectedIndices();
 							// Get all the selected items using the indices
-							for (int i = 0; i < getSelectedIndex.length; i++) {
+							for (int aGetSelectedIndex : getSelectedIndex) {
 
-								String actionCond = actionConditionList.getModel().getElementAt(getSelectedIndex[i]).toString();
+								String actionCond = actionConditionList.getModel().getElementAt(aGetSelectedIndex).toString();
 
 								switch (actionCond) {
-								case "FRAME_RIGHT":
-									spriteSelected.setRight("FRAME_RIGHT");
-									break;
-								case "FRAME_TOP":
-									spriteSelected.setTop("FRAME_TOP");
-									break;
-								case "FRAME_BOTTOM":
-									spriteSelected.setBottom("FRAME_BOTTOM");
-									break;
-								case "FRAME_LEFT":
-									spriteSelected.setLeft("FRAME_LEFT");
-									break;
+									case "FRAME_RIGHT":
+										spriteSelected.setRight("FRAME_RIGHT");
+										break;
+									case "FRAME_TOP":
+										spriteSelected.setTop("FRAME_TOP");
+										break;
+									case "FRAME_BOTTOM":
+										spriteSelected.setBottom("FRAME_BOTTOM");
+										break;
+									case "FRAME_LEFT":
+										spriteSelected.setLeft("FRAME_LEFT");
+										break;
 								}
 								actionCondType.add(actionCond);
 								actionConditionTypeSummaryStringBuffer.append(actionCond + " | ");
@@ -467,9 +462,9 @@ public class ControlPanel extends JPanel implements ActionListener {
 
 						if (spriteAssociationList != null) {
 							getSelectedIndex = spriteAssociationList.getSelectedIndices();
-							for (int i = 0; i < getSelectedIndex.length; i++) {
+							for (int aGetSelectedIndex : getSelectedIndex) {
 								Sprite associatedSpriteSelect = getGameData().getSelectedSprite(
-										spriteAssociationList.getModel().getElementAt(getSelectedIndex[i]).toString());
+										spriteAssociationList.getModel().getElementAt(aGetSelectedIndex).toString());
 								associatedSprite.add(associatedSpriteSelect);
 								associatedSpriteSummaryStringBuffer.append(associatedSpriteSelect.getName());
 							}
@@ -478,8 +473,8 @@ public class ControlPanel extends JPanel implements ActionListener {
 						if (actionTypeList != null) {
 							getSelectedIndex = actionTypeList.getSelectedIndices();
 							String actionTypeString;
-							for (int i = 0; i < getSelectedIndex.length; i++) {
-								actionTypeString = actionTypeList.getModel().getElementAt(getSelectedIndex[i]).toString();
+							for (int aGetSelectedIndex : getSelectedIndex) {
+								actionTypeString = actionTypeList.getModel().getElementAt(aGetSelectedIndex).toString();
 								actionType.add(actionTypeString);
 								actionTypeSummaryStringBuffer.append(actionTypeString + " | ");
 							}
@@ -506,9 +501,9 @@ public class ControlPanel extends JPanel implements ActionListener {
 							gameSummaryStringBuffer.append(eventSelectedValue + " | ");
 							if (actionTypeList != null) {
 								getSelectedIndex = actionTypeList.getSelectedIndices();
-								for (int i = 0; i < getSelectedIndex.length; i++) {
+								for (int aGetSelectedIndex : getSelectedIndex) {
 									for (ActionConditionAssociation aca : ea.getActionList()) {
-										String actionTypeString = actionTypeList.getModel().getElementAt(getSelectedIndex[i])
+										String actionTypeString = actionTypeList.getModel().getElementAt(aGetSelectedIndex)
 												.toString();
 										aca.getActionType().add(actionTypeString);
 										actionTypeSummaryStringBuffer.append(actionTypeString + " | ");
@@ -518,10 +513,10 @@ public class ControlPanel extends JPanel implements ActionListener {
 
 							if (spriteAssociationList != null) {
 								getSelectedIndex = spriteAssociationList.getSelectedIndices();
-								for (int i = 0; i < getSelectedIndex.length; i++) {
+								for (int aGetSelectedIndex1 : getSelectedIndex) {
 									for (ActionConditionAssociation aca : ea.getActionList()) {
 										Sprite associatedSpriteName = gameData.getSelectedSprite(spriteAssociationList.getModel()
-												.getElementAt(getSelectedIndex[i]).toString());
+												.getElementAt(aGetSelectedIndex1).toString());
 										aca.getAssociatedSpriteList().add(associatedSpriteName);
 										associatedSpriteSummaryStringBuffer.append(associatedSpriteName.getName());
 
@@ -530,24 +525,24 @@ public class ControlPanel extends JPanel implements ActionListener {
 
 								if (actionConditionList != null) {
 									getSelectedIndex = actionConditionList.getSelectedIndices();
-									for (int i = 0; i < getSelectedIndex.length; i++) {
+									for (int aGetSelectedIndex : getSelectedIndex) {
 										for (ActionConditionAssociation aca : ea.getActionList()) {
 											{
 												String actionCondString = actionConditionList.getModel()
-														.getElementAt(getSelectedIndex[i]).toString();
+														.getElementAt(aGetSelectedIndex).toString();
 												switch (actionCondString) {
-												case "FRAME_RIGHT":
-													spriteSelected.setRight("FRAME_RIGHT");
-													break;
-												case "FRAME_TOP":
-													spriteSelected.setTop("FRAME_TOP");
-													break;
-												case "FRAME_BOTTOM":
-													spriteSelected.setBottom("FRAME_BOTTOM");
-													break;
-												case "FRAME_LEFT":
-													spriteSelected.setLeft("FRAME_LEFT");
-													break;
+													case "FRAME_RIGHT":
+														spriteSelected.setRight("FRAME_RIGHT");
+														break;
+													case "FRAME_TOP":
+														spriteSelected.setTop("FRAME_TOP");
+														break;
+													case "FRAME_BOTTOM":
+														spriteSelected.setBottom("FRAME_BOTTOM");
+														break;
+													case "FRAME_LEFT":
+														spriteSelected.setLeft("FRAME_LEFT");
+														break;
 												}
 												aca.getActionCondition().add(actionCondString);
 												actionConditionTypeSummaryStringBuffer.append(actionCondString + " | ");
@@ -753,7 +748,7 @@ public class ControlPanel extends JPanel implements ActionListener {
 	/*
 	 * Adds the items of a string array to DefaultListModel and sorts it
 	 */
-	public void addItemToScrollPane(DefaultListModel defaultListModel, String[] itemArray) {
+	private void addItemToScrollPane(DefaultListModel defaultListModel, String[] itemArray) {
 
 		Arrays.sort(itemArray);
 		for (String item : itemArray) {
@@ -906,7 +901,7 @@ public class ControlPanel extends JPanel implements ActionListener {
 		return backgroundSelectionPanel;
 	}
 
-	public void backgroundImageSelector(JPanel backGroundPanel) {
+	private void backgroundImageSelector(JPanel backGroundPanel) {
 
 		final JList spriteList;
 
@@ -961,12 +956,12 @@ public class ControlPanel extends JPanel implements ActionListener {
 		backGroundPanel.add(backgroundImageScrollPane);
 	}
 
-	public JPanel createClockCheckPanel() {
+	private JPanel createClockCheckPanel() {
 
 		JPanel clockCheckPanel = new JPanel();
 
 		JLabel clockCheckBoxLabel = new JLabel("Add Clock?");
-		clockCheckBox = new JCheckBox();
+		JCheckBox clockCheckBox = new JCheckBox();
 
 		// Adding listener to the checkbox.
 		// If checked, add Clock to the Preview Panel and the Demo Panel
@@ -1003,7 +998,7 @@ public class ControlPanel extends JPanel implements ActionListener {
 		return clockCheckPanel;
 	}
 
-	public JPanel createSpriteDetailPanel() {
+	private JPanel createSpriteDetailPanel() {
 
 		// Panel for Sprite Details
 		JPanel spriteDetailPanel = new JPanel();
@@ -1022,7 +1017,7 @@ public class ControlPanel extends JPanel implements ActionListener {
 		GridBagConstraints gbc = new GridBagConstraints();
 
 		// JPanel spriteSelectorPanel = new JPanel();
-		selectorSelector = new SpriteSelector();
+		SpriteSelector selectorSelector = new SpriteSelector();
 		final JScrollPane spriteSelectorScrollPane = selectorSelector
 				.generateSprite(getGameData(), this, getPreviewPanelObject());
 
@@ -1144,8 +1139,8 @@ public class ControlPanel extends JPanel implements ActionListener {
 		return spriteDetailPanel;
 	}
 
-	public JPanel createGameMakerControlButtonsPanel() {
-		gameMakerControlButtonsPanel = new JPanel();
+	private JPanel createGameMakerControlButtonsPanel() {
+		JPanel gameMakerControlButtonsPanel = new JPanel();
 		gameMakerControlButtonsPanel.setLayout(new FlowLayout());
 
 		JButton saveButton = new JButton("Save Game");
@@ -1210,23 +1205,23 @@ public class ControlPanel extends JPanel implements ActionListener {
 
 	}
 
-	public String getBorderTitleString() {
+	private String getBorderTitleString() {
 		return borderTitleString;
 	}
 
-	public void setBorderTitleString(String borderTitleString) {
+	private void setBorderTitleString(String borderTitleString) {
 		this.borderTitleString = borderTitleString;
 	}
 
-	public String getTextFieldString() {
+	private String getTextFieldString() {
 		return textFieldString;
 	}
 
-	public void setTextFieldString(String textFieldString) {
+	private void setTextFieldString(String textFieldString) {
 		this.textFieldString = textFieldString;
 	}
 
-	public JTextField getSpriteNameTextField() {
+	private JTextField getSpriteNameTextField() {
 		return spriteNameTextField;
 	}
 
@@ -1238,15 +1233,15 @@ public class ControlPanel extends JPanel implements ActionListener {
 		return gameData;
 	}
 
-	public void setGameData(GameData gameData) {
+	private void setGameData(GameData gameData) {
 		this.gameData = gameData;
 	}
 
-	public PreviewPanel getPreviewPanelObject() {
+	private PreviewPanel getPreviewPanelObject() {
 		return previewPanelObject;
 	}
 
-	public void setPreviewPanelObject(PreviewPanel previewPanelObject) {
+	private void setPreviewPanelObject(PreviewPanel previewPanelObject) {
 		this.previewPanelObject = previewPanelObject;
 	}
 

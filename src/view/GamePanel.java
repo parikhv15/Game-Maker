@@ -3,15 +3,11 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 import model.GameData;
-import model.Sprite;
 import model.GameConstants.GameMode;
 
 /* class used for game maker application frame. This class divides main frame into two frames 

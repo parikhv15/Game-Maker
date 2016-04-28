@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,34 +21,34 @@ import javax.swing.ImageIcon;
 public class GameData implements Serializable {
 
 	public enum ActionCondition {
-		TOP_FRAME, BOTTOM_FRAME, LEFT_FRAME, RIGHT_FRAME, SPRITE;// GAME_WIN,
+		TOP_FRAME, BOTTOM_FRAME, LEFT_FRAME, RIGHT_FRAME, SPRITE// GAME_WIN,
 																	// GAME_LOSE,
 																	// GAME_CONTINUE;
-	};
+	}
 
 	// Constants for the various Event types
 	public enum EventType {
-		NONE, KEYBOARD_PRESS_EVENT, COLLISION_EVENT, AUTO;
-	};
+		NONE, KEYBOARD_PRESS_EVENT, COLLISION_EVENT, AUTO
+	}
 
 	// Constants for the various KeyBoard Press Event Action types
 	public enum KeyboardPressEventActionType {
-		MOVE_LEFT, MOVE_RIGHT, MOVE_UP, MOVE_DOWN;
-	};
+		MOVE_LEFT, MOVE_RIGHT, MOVE_UP, MOVE_DOWN
+	}
 
 	// Constants for the various Collision Event Action types
 	public enum CollisionEventActionType {
 		REFLECT_ACTION, PLAY_COLLISION_SOUND_ACTION, VANISH_ACTION, STATIC_ACTION
-	};
+	}
 
 	public enum ReflectActionType {
 		FRAME_TOP, FRAME_BOTTOM, FRAME_LEFT, FRAME_RIGHT, SPRITE
-	};
+	}
 
 	// Constants for the various Automatic / Free Movement action types
 	public enum AutoEventActionType {
 		FREE_MOVE
-	};
+	}
 
 	private ActionCondition gameCondition;
 	private EventType eventType;
@@ -68,9 +67,9 @@ public class GameData implements Serializable {
 	private HashMap<String, Integer> spriteNameTrackerHashMap;
 
 	public GameData() {
-		eventTable = new ArrayList<EventActionAssociation>();
-		sprites = new ArrayList<Sprite>();
-		spriteNameTrackerHashMap = new HashMap<String, Integer>();
+		eventTable = new ArrayList<>();
+		sprites = new ArrayList<>();
+		spriteNameTrackerHashMap = new HashMap<>();
 		gameSummaryModel = new DefaultListModel();
 	}
 
@@ -106,8 +105,6 @@ public class GameData implements Serializable {
 			out.writeObject(this);
 			out.close();
 			fileOut.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -133,8 +130,6 @@ public class GameData implements Serializable {
 			this.setGameSummaryModel(tempGameData.getGameSummaryModel());
 			loadStream.close();
 			fileLoad.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

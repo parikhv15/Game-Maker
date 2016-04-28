@@ -114,11 +114,7 @@ public class TimerObservable extends Observable{
 										if (collisionEvent.detectCollision(spriteName, eventEntry.getSprite())) {
 											try {
 												collisionEvent.PlayCollisionSoundAction();
-											} catch (UnsupportedAudioFileException e) {
-												e.printStackTrace();
-											} catch (IOException e) {
-												e.printStackTrace();
-											} catch (LineUnavailableException e) {
+											} catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
 												e.printStackTrace();
 											}
 										}
